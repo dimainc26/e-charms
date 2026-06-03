@@ -1,0 +1,155 @@
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  list-style-type: none;
+}
+
+:root {
+  --back-color: #e0dad2;
+  --under-color: #b5aba2;
+  --font-color: #635c59;
+  --soft-color: #817b74;
+  --other-color: #beb6ac;
+}
+
+a {
+  text-decoration: none;
+  color: var(--soft-color);
+  font-size: 18px;
+}
+
+a:hover {
+  text-decoration: underline;
+  color: var(--font-color);
+}
+
+body {
+  background-color: var(--back-color);
+  overflow-x: hidden;
+}
+
+header {
+  padding: 24px 2.5%;
+}
+
+nav {
+  display: flex;
+  justify-content: space-between;
+  flex-direction: row;
+}
+
+.nav-links,
+.nav-icons {
+  display: flex;
+  flex-direction: row;
+  gap: 20px;
+}
+
+.nav-icons img {
+  width: 20px;
+  height: 20px;
+}
+
+.bag {
+  position: relative;
+}
+
+.dot {
+  position: absolute;
+  right: -2px;
+  top: -3px;
+  background-color: red;
+  width: 5px;
+  height: 5px;
+  border-radius: 100%;
+}
+
+/* _____________________________________________________________________ */
+/* BasicsCharm */
+/* _____________________________________________________________________ */
+
+.hero {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  gap: 40px;
+}
+
+.hero p {
+  font-size: 200px;
+}
+
+.basics {
+  color: var(--font-color);
+}
+
+.charm {
+  color: var(--other-color);
+}
+
+/* _____________________________________________________________________ */
+/* Gallery */
+/* _____________________________________________________________________ */
+
+.gallery-section {
+  display: flex;
+  flex-direction: column;
+  overflow: visible;
+}
+
+/* _____________________________________________________________________ */
+/* Menu */
+/* _____________________________________________________________________ */
+
+.menu {
+  padding: 24px 2.5% 80px 2.5%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.filters {
+  display: flex;
+  flex-direction: column;
+}
+
+.filters > p {
+  color: var(--font-color);
+  font-size: 18px;
+}
+
+.filter {
+  display: flex;
+  gap: 6px;
+  align-content: end;
+  align-items: end;
+}
+
+.filter-icon {
+  width: 20px;
+  height: 20px;
+}
+
+.filter > p {
+  font-size: 12px;
+}
+
+.disposition ul {
+  display: flex;
+  flex-direction: row;
+  gap: 16px;
+}
+
+.active {
+  color: var(--font-color);
+  text-decoration: underline;
+}
+
+.gallery {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-end;
+  width: 100%;
+}
