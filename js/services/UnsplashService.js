@@ -8,7 +8,7 @@ export class UnsplashService {
         }
     }
 
-    async searchPhotos(query = "fashion model white background", perPage = 12) {
+    async searchPhotos(query = "fashion model white background", perPage = 30) {
         const params = new URLSearchParams({
             query,
             per_page: String(perPage),

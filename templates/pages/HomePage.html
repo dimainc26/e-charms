@@ -2,13 +2,13 @@
   <header>
     <nav>
       <ul class="nav-links">
-        <li><a href="" class="nav-link">Woman</a></li>
-        <li><a href="" class="nav-link">Man</a></li>
-        <li><a href="" class="nav-link">Teen</a></li>
-        <li><a href="" class="nav-link">Kids</a></li>
+        <li><a href="" class="nav-link" data-category="woman">Woman</a></li>
+        <li><a href="" class="nav-link" data-category="man">Man</a></li>
+        <li><a href="" class="nav-link" data-category="teen">Teen</a></li>
+        <li><a href="" class="nav-link" data-category="kids">Kids</a></li>
       </ul>
       <ul class="nav-icons">
-        <li><a href="" class="nav-icon"> <img src="../../assets/icons/search.svg" alt=""> </a></li>
+        <li><a href="" class="nav-icon" data-search-toggle aria-label="Open search" aria-expanded="false"> <img src="../../assets/icons/search.svg" alt=""> </a></li>
         <li><a href="" class="nav-icon"> <img src="../../assets/icons/love.svg" alt=""> </a></li>
         <li><a href="" class="nav-icon bag"> <img src="../../assets/icons/bag.svg" alt="">
             <div class="dot"></div>
@@ -16,6 +16,12 @@
         <li><a href="" class="nav-icon"> <img src="../../assets/icons/avatar.svg" alt=""> </a></li>
       </ul>
     </nav>
+    <div class="search-panel" data-search-panel>
+      <form class="search-panel__form" data-search-form>
+        <input class="search-panel__input" id="site-search" name="search" data-search-input type="search"
+          placeholder="search" autocomplete="off">
+      </form>
+    </div>
   </header>
 
   <main>
@@ -40,7 +46,13 @@
           </ul>
         </div>
       </div>
-      <div class="gallery" data-gallery></div>
+      <div class="carousel">
+        <button class="carousel__button carousel__button--prev" type="button" data-carousel-prev
+          aria-label="Previous product">&lt;</button>
+        <div class="gallery" data-gallery></div>
+        <button class="carousel__button carousel__button--next" type="button" data-carousel-next
+          aria-label="Next product">&gt;</button>
+      </div>
 
       <template class="container" data-fashion-card>
         <article class="card">
@@ -52,6 +64,7 @@
             <p class="card__credit">
               <a data-author target="_blank" rel="noreferrer"></a>
             </p>
+            <p class="card__name" data-name></p>
             <p class="price">€ 22.99</p>
           </div>
 

@@ -10,3 +10,4 @@ if (!app) {
 const page = new HomePage();
 
 app.innerHTML = await page.render();
+page.mount(app);

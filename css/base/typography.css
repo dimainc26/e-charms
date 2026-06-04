@@ -1,0 +1,21 @@
+@font-face {
+  font-family: "Gallient";
+  src: url("../../assets/fonts/Gallient Regular.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Lovelace";
+  src: url("../../assets/fonts/Lovelace Text Regular.otf") format("opentype");
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Lovelace";
+  src: url("../../assets/fonts/Lovelace Text Bold Italic.otf")
+    format("opentype");
+  font-weight: bold;
+  font-style: italic;
+}
