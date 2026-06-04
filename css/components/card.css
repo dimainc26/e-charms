@@ -32,7 +32,8 @@
   flex-direction: column;
   min-height: 70px;
   min-width: 0;
-  padding: 14px 12px 0;
+  padding: 14px 48px 0 12px;
+  position: relative;
   background-color: var(--back-color);
 }
 
@@ -59,6 +60,65 @@
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
+}
+
+.favorite-toggle {
+  position: absolute;
+  top: 14px;
+  right: 12px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  --favorite-icon: url("../../assets/icons/love.svg");
+  width: 28px;
+  height: 28px;
+  border: 0;
+  background: transparent;
+  color: var(--soft-color);
+  cursor: pointer;
+  opacity: 0.58;
+  transition:
+    color 180ms ease,
+    opacity 180ms ease,
+    transform 180ms ease;
+}
+
+.favorite-toggle::before {
+  width: 20px;
+  height: 20px;
+  display: block;
+  background-color: currentColor;
+  content: "";
+  mask: var(--favorite-icon) center / contain no-repeat;
+  -webkit-mask: var(--favorite-icon) center / contain no-repeat;
+}
+
+.favorite-toggle img {
+  width: 20px;
+  height: 20px;
+  display: none;
+}
+
+.favorite-toggle:hover,
+.favorite-toggle:focus-visible,
+.favorite-toggle--active {
+  opacity: 1;
+}
+
+.favorite-toggle:focus-visible {
+  outline: 1px solid var(--font-color);
+  outline-offset: 3px;
+}
+
+.favorite-toggle--active {
+  --favorite-icon: url("data:image/svg+xml,%3Csvg viewBox='0 0 24 24' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z'/%3E%3C/svg%3E");
+  color: #b6465f;
+  transform: scale(1.08);
+}
+
+.gallery:not(.grid) .card:not(.card--active) .favorite-toggle {
+  opacity: 0;
+  pointer-events: none;
 }
 
 .gallery .card {

@@ -9,8 +9,8 @@
       </ul>
       <ul class="nav-icons">
         <li><a href="" class="nav-icon" data-search-toggle aria-label="Open search" aria-expanded="false"> <img src="../../assets/icons/search.svg" alt=""> </a></li>
-        <li><a href="" class="nav-icon"> <img src="../../assets/icons/love.svg" alt=""> </a></li>
-        <li><a href="" class="nav-icon bag"> <img src="../../assets/icons/bag.svg" alt="">
+        <li><a href="#favorites" class="nav-icon" aria-label="Favorites"> <img src="../../assets/icons/love.svg" alt=""> </a></li>
+        <li><a href="" class="nav-icon bag" data-cart-toggle aria-label="Open shopping bag" aria-expanded="false"> <img src="../../assets/icons/bag.svg" alt="">
             <div class="dot"></div>
           </a></li>
         <li><a href="" class="nav-icon"> <img src="../../assets/icons/avatar.svg" alt=""> </a></li>
@@ -23,6 +23,19 @@
       </form>
     </div>
   </header>
+
+  <div class="cart-shell" data-cart-shell aria-hidden="true">
+    <button class="cart-backdrop" type="button" data-cart-close aria-label="Close shopping bag"></button>
+    <aside class="cart-sidebar" role="dialog" aria-modal="true" aria-labelledby="cart-title">
+      <div class="cart-sidebar__header">
+        <h2 id="cart-title">Shopping bag</h2>
+        <button class="cart-sidebar__close" type="button" data-cart-close aria-label="Close shopping bag">&times;</button>
+      </div>
+      <div class="cart-sidebar__body">
+        <p class="cart-sidebar__empty">Your bag is empty.</p>
+      </div>
+    </aside>
+  </div>
 
   <main>
     <div class="hero">
@@ -66,6 +79,10 @@
             </p>
             <p class="card__name" data-name></p>
             <p class="price">€ 22.99</p>
+            <button class="favorite-toggle" type="button" data-favorite-toggle aria-pressed="false"
+              aria-label="Add to favorites">
+              <img src="../../assets/icons/love.svg" alt="">
+            </button>
           </div>
 
         </article>

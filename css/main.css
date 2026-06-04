@@ -13,6 +13,8 @@
 @import url("./components/card.css");
 @import url("./components/modal.css");
 @import url("./components/fashion-gallery.css");
+@import url("./components/favorites.css");
+@import url("./components/cart-sidebar.css");
 
 /* Themes */
 /* @import url("./themes/dark.css"); */

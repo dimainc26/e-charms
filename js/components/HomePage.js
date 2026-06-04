@@ -1,4 +1,5 @@
 import { UnsplashService } from "../services/UnsplashService.js";
+import { FavoriteService } from "../services/FavoriteService.js";
 import { loadHtml } from "../utils/dom.js";
 
 const CATEGORY_PROMPTS = {
@@ -102,6 +103,15 @@ export class HomePage {
         });
 
         this.gallery?.addEventListener("click", (event) => {
+            const favoriteButton = event.target.closest("[data-favorite-toggle]");
+
+            if (favoriteButton && this.gallery.contains(favoriteButton)) {
+                event.preventDefault();
+                event.stopPropagation();
+                this.toggleFavorite(favoriteButton);
+                return;
+            }
+
             const card = event.target.closest(".card");
 
             if (!card || !this.gallery.contains(card)) {
@@ -233,10 +243,12 @@ export class HomePage {
         author.textContent = item.authorName;
 
         const price = card.querySelector(".price");
-        if (price) price.textContent = this.getRandomPrice();
+        if (price) price.textContent = item.price ?? "";
 
         const name = card.querySelector("[data-name]");
         if (name) name.textContent = item.name ?? "";
+
+        this.updateFavoriteButton(card, item);
     }
 
     animateToSlot(targetSlot) {
@@ -376,9 +388,12 @@ export class HomePage {
             price.className = "price";
             price.textContent = item.price ?? this.getRandomPrice();
 
+            const favoriteButton = this.createFavoriteButton(item);
+
             box.appendChild(img);
             credits.appendChild(name);
             credits.appendChild(price);
+            credits.appendChild(favoriteButton);
             card.appendChild(box);
             card.appendChild(credits);
             this.gallery.appendChild(card);
@@ -404,10 +419,60 @@ export class HomePage {
                 </p>
                 <p class="card__name" data-name></p>
                 <p class="price"></p>
+                <button class="favorite-toggle" type="button" data-favorite-toggle aria-pressed="false"
+                    aria-label="Add to favorites">
+                    <img src="../../assets/icons/love.svg" alt="">
+                </button>
             </div>
         `;
             this.gallery.appendChild(card);
             this.updateCard(card, slot);
         }
+    }
+
+    createFavoriteButton(item) {
+        const button = document.createElement("button");
+        button.className = "favorite-toggle";
+        button.type = "button";
+        button.dataset.favoriteToggle = "";
+        button.innerHTML = '<img src="../../assets/icons/love.svg" alt="">';
+
+        this.updateFavoriteButton(button, item);
+
+        return button;
+    }
+
+    updateFavoriteButton(cardOrButton, item) {
+        const button = cardOrButton.matches?.("[data-favorite-toggle]")
+            ? cardOrButton
+            : cardOrButton.querySelector?.("[data-favorite-toggle]");
+
+        if (!button || !item?.id) {
+            return;
+        }
+
+        const isFavorite = FavoriteService.has(item.id);
+
+        button.dataset.itemId = item.id;
+        button.classList.toggle("favorite-toggle--active", isFavorite);
+        button.setAttribute("aria-pressed", String(isFavorite));
+        button.setAttribute("aria-label", isFavorite ? "Remove from favorites" : "Add to favorites");
+    }
+
+    toggleFavorite(button) {
+        const item = this.images.find((image) => image.id === button.dataset.itemId);
+
+        if (!item) {
+            return;
+        }
+
+        const isFavorite = FavoriteService.toggle(item);
+
+        this.gallery.querySelectorAll(`[data-favorite-toggle][data-item-id="${CSS.escape(item.id)}"]`)
+            .forEach((favoriteButton) => {
+                favoriteButton.classList.toggle("favorite-toggle--active", isFavorite);
+                favoriteButton.setAttribute("aria-pressed", String(isFavorite));
+                favoriteButton.setAttribute("aria-label", isFavorite ? "Remove from favorites" : "Add to favorites");
+            });
     }
 }
