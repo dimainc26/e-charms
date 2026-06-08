@@ -1,0 +1,87 @@
+<header>
+  <nav>
+    <ul class="nav-links">
+      <li><a href="#home" class="nav-link">Woman</a></li>
+      <li><a href="#home" class="nav-link">Man</a></li>
+      <li><a href="#home" class="nav-link">Teen</a></li>
+      <li><a href="#home" class="nav-link">Kids</a></li>
+    </ul>
+    <ul class="nav-icons">
+      <li><a href="#home" class="nav-icon" aria-label="Search"> <img src="./assets/icons/search.svg" alt=""> </a></li>
+      <li><a href="#favorites" class="nav-icon" aria-label="Favorites"> <img src="./assets/icons/love.svg" alt=""> </a>
+      </li>
+      <li><a href="" class="nav-icon bag" data-cart-toggle aria-label="Open shopping bag" aria-expanded="false"> <img
+            src="./assets/icons/bag.svg" alt="">
+          <div class="dot"></div>
+        </a></li>
+      <li><a href="#profile" class="nav-icon active" aria-label="Profile"> <img src="./assets/icons/avatar.svg" alt="">
+        </a></li>
+    </ul>
+  </nav>
+</header>
+
+<div class="cart-shell" data-cart-shell aria-hidden="true">
+  <button class="cart-backdrop" type="button" data-cart-close aria-label="Close shopping bag"></button>
+  <aside class="cart-sidebar" role="dialog" aria-modal="true" aria-labelledby="cart-title">
+    <div class="cart-sidebar__header">
+      <h2 id="cart-title">Shopping bag</h2>
+      <button class="cart-sidebar__close" type="button" data-cart-close aria-label="Close shopping bag">&times;</button>
+    </div>
+    <div class="cart-sidebar__body">
+      <p class="cart-sidebar__empty">Your bag is empty.</p>
+    </div>
+  </aside>
+</div>
+
+<main class="profile-page">
+  <section class="profile-hero">
+    <p class="basics">Profile</p>
+    <p class="charm">Account</p>
+  </section>
+
+  <section class="profile-section" aria-label="Account profile">
+    <aside class="profile-summary">
+      <div class="profile-avatar">
+        <img src="./assets/icons/avatar.svg" alt="">
+      </div>
+      <p class="profile-name">Sofia Bianchi</p>
+      <p class="profile-email">sofia.bianchi@example.com</p>
+      <a class="profile-link" href="#favorites">View favorites</a>
+    </aside>
+
+    <div class="profile-details">
+      <section class="profile-panel" aria-labelledby="profile-orders-title">
+        <div>
+          <p class="profile-label">Orders</p>
+          <h2 id="profile-orders-title">Recent activity</h2>
+        </div>
+        <ul class="profile-list">
+          <li>
+            <span>Summer linen set</span>
+            <strong>Delivered</strong>
+          </li>
+          <li>
+            <span>Cotton shirt reserve</span>
+            <strong>Processing</strong>
+          </li>
+          <li>
+            <span>Wishlist update</span>
+            <strong>Saved</strong>
+          </li>
+        </ul>
+      </section>
+
+      <section class="profile-panel" aria-labelledby="profile-address-title">
+        <div>
+          <p class="profile-label">Shipping</p>
+          <h2 id="profile-address-title">Default address</h2>
+        </div>
+        <address>
+          Via Roma 24<br>
+          20121 Milano<br>
+          Italia
+        </address>
+      </section>
+    </div>
+  </section>
+</main>

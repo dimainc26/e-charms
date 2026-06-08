@@ -1,6 +1,7 @@
 
 import { HomePage } from "./components/HomePage.js";
 import { FavoritePage } from "./components/FavoritePage.js";
+import { ProfilePage } from "./components/ProfilePage.js";
 
 const app = document.querySelector("#app");
 
@@ -60,9 +61,11 @@ document.addEventListener("keydown", (event) => {
 });
 
 async function renderRoute() {
-    const Page = window.location.hash === "#favorites"
-        ? FavoritePage
-        : HomePage;
+    const routes = {
+        "#favorites": FavoritePage,
+        "#profile": ProfilePage,
+    };
+    const Page = routes[window.location.hash] ?? HomePage;
     const page = new Page();
 
     app.innerHTML = await page.render();
