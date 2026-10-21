@@ -1,155 +1,3 @@
-* {
-  padding: 0;
-  margin: 0;
-  box-sizing: border-box;
-  list-style-type: none;
-}
-
-:root {
-  --back-color: #e0dad2;
-  --under-color: #b5aba2;
-  --font-color: #635c59;
-  --soft-color: #817b74;
-  --other-color: #beb6ac;
-}
-
-a {
-  text-decoration: none;
-  color: var(--soft-color);
-  font-size: 18px;
-}
-
-a:hover {
-  text-decoration: underline;
-  color: var(--font-color);
-}
-
-body {
-  background-color: var(--back-color);
-  overflow-x: hidden;
-}
-
-header {
-  padding: 24px 2.5%;
-  position: relative;
-  z-index: 30;
-}
-
-nav {
-  display: flex;
-  justify-content: space-between;
-  flex-direction: row;
-}
-
-.nav-links,
-.nav-icons {
-  display: flex;
-  flex-direction: row;
-  gap: 20px;
-}
-
-.nav-icons img {
-  width: 20px;
-  height: 20px;
-}
-
-.search-panel {
-  position: absolute;
-  top: calc(100% - 12px);
-  left: 2.5%;
-  right: 2.5%;
-  z-index: 40;
-  padding: 18px;
-  background: rgba(244, 245, 243, 0.86);
-  border: 1px solid rgba(99, 92, 89, 0.16);
-  box-shadow: 0 18px 45px rgba(99, 92, 89, 0.18);
-  opacity: 0;
-  pointer-events: none;
-  transform: translateY(-18px);
-  transition:
-    opacity 260ms ease,
-    transform 320ms ease;
-}
-
-.search-panel--open {
-  opacity: 1;
-  pointer-events: auto;
-  transform: translateY(0);
-}
-
-.search-panel__form {
-  width: 100%;
-}
-
-.search-panel__input {
-  display: block;
-  width: 100%;
-  height: 54px;
-  padding: 0 20px;
-  border: 0;
-  border-bottom: 1px solid var(--font-color);
-  outline: 0;
-  background: transparent;
-  color: var(--font-color);
-  font-family: "Lovelace", serif;
-  font-size: 28px;
-  line-height: 1;
-}
-
-.search-panel__input::placeholder {
-  color: var(--under-color);
-  opacity: 1;
-}
-
-.search-panel__input:focus {
-  border-bottom-color: var(--soft-color);
-}
-
-.bag {
-  position: relative;
-}
-
-.dot {
-  position: absolute;
-  right: -2px;
-  top: -3px;
-  background-color: red;
-  width: 5px;
-  height: 5px;
-  border-radius: 100%;
-}
-
-/* _____________________________________________________________________ */
-/* BasicsCharm */
-/* _____________________________________________________________________ */
-
-.hero {
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  align-items: center;
-  gap: 40px;
-}
-
-.hero p {
-  font-size: 6.5rem;
-}
-
-.basics {
-  color: var(--font-color);
-  font-family: "Gallient";
-}
-
-.charm {
-  color: var(--other-color);
-  font-family: "Lovelace";
-  font-style: italic;
-}
-
-/* _____________________________________________________________________ */
-/* Gallery */
-/* _____________________________________________________________________ */
-
 .gallery-section {
   display: flex;
   flex-direction: column;
@@ -161,27 +9,36 @@ nav {
 /* _____________________________________________________________________ */
 
 .menu {
-  padding: 24px 2.5% 80px 2.5%;
   display: flex;
-  flex-direction: row;
+  align-items: flex-start;
   justify-content: space-between;
+  gap: 12px 16px;
+  padding: 24px var(--gutter) 80px;
 }
 
-.filters {
+.menu__left {
   display: flex;
   flex-direction: column;
+  align-items: flex-start;
+  min-width: 0;
 }
 
-.filters > p {
+/* same height as the layout buttons so both sit on one line */
+.menu__title {
+  display: flex;
+  align-items: center;
+  min-height: var(--tap);
   color: var(--font-color);
   font-size: 18px;
 }
 
 .filter {
-  display: flex;
-  gap: 6px;
-  align-content: end;
-  align-items: end;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  min-height: var(--tap);
+  color: var(--soft-color);
+  font-size: 14px;
 }
 
 .filter-icon {
@@ -189,20 +46,47 @@ nav {
   height: 20px;
 }
 
-.filter > p {
+.filter-count {
+  min-width: 18px;
+  height: 18px;
+  padding: 0 5px;
+  border-radius: 9px;
+  background-color: var(--font-color);
+  color: var(--surface-color);
   font-size: 12px;
+  line-height: 18px;
+  text-align: center;
 }
 
-.disposition ul {
+.menu__status {
   display: flex;
-  flex-direction: row;
-  gap: 16px;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0 12px;
+  color: var(--soft-color);
+  font-size: 14px;
 }
 
-.active {
+.disposition {
+  display: flex;
+  gap: 4px;
+}
+
+.disposition button {
+  min-height: var(--tap);
+  padding: 0 8px;
+  color: var(--soft-color);
+  font-size: 18px;
+}
+
+.disposition button[aria-pressed="true"] {
   color: var(--font-color);
   text-decoration: underline;
 }
+
+/* _____________________________________________________________________ */
+/* Carousel / gallery */
+/* _____________________________________________________________________ */
 
 .carousel {
   position: relative;
@@ -213,16 +97,21 @@ nav {
   position: absolute;
   top: 50%;
   z-index: 20;
-  width: 36px;
-  height: 36px;
-  border: 0;
+  display: grid;
+  place-items: center;
+  width: var(--tap);
+  height: var(--tap);
   border-radius: 50%;
   background-color: var(--back-color);
+  box-shadow: 0 2px 12px rgba(99, 92, 89, 0.28);
   color: var(--font-color);
-  cursor: pointer;
-  font-size: 22px;
-  line-height: 1;
   transform: translateY(-50%);
+  transition: opacity 180ms ease;
+}
+
+.carousel__button:disabled {
+  opacity: 0.35;
+  cursor: default;
 }
 
 .carousel__button--prev {
@@ -233,17 +122,66 @@ nav {
   right: 12px;
 }
 
+/* Touch devices swipe, grid has nothing to step through */
+.carousel--grid .carousel__button {
+  display: none;
+}
+
+@media (pointer: coarse) {
+  .carousel__button {
+    display: none;
+  }
+}
+
 .gallery {
+  position: relative;
   display: flex;
   flex-direction: row;
   align-items: flex-end;
   width: 100%;
   transform: translateX(var(--carousel-shift, 0));
-  transition: transform 420ms ease;
+  transition: transform var(--motion) ease;
 }
 
-.gallery--no-transition,
-.gallery--no-transition .card,
-.gallery--no-transition .card__image {
+.gallery[data-mode="slots"] {
+  touch-action: pan-y;
+}
+
+.gallery[data-mode="snap"] {
+  --snap-w: clamp(240px, 68vw, 360px);
+  align-items: flex-start;
+  gap: 12px;
+  padding: 12px calc(50% - var(--snap-w) / 2) 16px;
+  overflow-x: auto;
+  overflow-y: hidden;
+  overscroll-behavior-x: contain;
+  scroll-snap-type: x mandatory;
+  scrollbar-width: none;
+  transform: none;
   transition: none;
+}
+
+.gallery[data-mode="snap"]::-webkit-scrollbar {
+  display: none;
+}
+
+.gallery[data-mode="grid"] {
+  display: grid;
+  grid-template-columns: repeat(var(--grid-cols), minmax(0, 1fr));
+  gap: var(--grid-gap);
+  align-items: start;
+  padding: 24px var(--gutter-wide);
+  transform: none;
+  transition: none;
+}
+
+/* _____________________________________________________________________ */
+/* Tablet and phone: less air above the gallery (the active card no longer
+   grows upward over the menu) */
+/* _____________________________________________________________________ */
+
+@media (max-width: 900px) {
+  .menu {
+    padding-bottom: 16px;
+  }
 }

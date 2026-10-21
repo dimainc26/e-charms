@@ -1,97 +1,91 @@
-<body>
-  <header>
-    <nav>
-      <ul class="nav-links">
-        <li><a href="" class="nav-link" data-category="woman">Woman</a></li>
-        <li><a href="" class="nav-link" data-category="man">Man</a></li>
-        <li><a href="" class="nav-link" data-category="teen">Teen</a></li>
-        <li><a href="" class="nav-link" data-category="kids">Kids</a></li>
-      </ul>
-      <ul class="nav-icons">
-        <li><a href="" class="nav-icon" data-search-toggle aria-label="Open search" aria-expanded="false"> <img
-              src="./assets/icons/search.svg" alt=""> </a></li>
-        <li><a href="#favorites" class="nav-icon" aria-label="Favorites"> <img src="./assets/icons/love.svg" alt="">
-          </a></li>
-        <li><a href="" class="nav-icon bag" data-cart-toggle aria-label="Open shopping bag" aria-expanded="false"> <img
-              src="./assets/icons/bag.svg" alt="">
-            <div class="dot"></div>
-          </a></li>
-        <li><a href="#profile" class="nav-icon" aria-label="Profile"> <img src="./assets/icons/avatar.svg" alt=""> </a>
-        </li>
-      </ul>
-    </nav>
-    <div class="search-panel" data-search-panel>
-      <form class="search-panel__form" data-search-form>
-        <input class="search-panel__input" id="site-search" name="search" data-search-input type="search"
-          placeholder="search" autocomplete="off">
-      </form>
-    </div>
-  </header>
+<h1 class="hero">
+  <span class="basics">Basics</span>
+  <span class="charm">Charm</span>
+</h1>
 
-  <div class="cart-shell" data-cart-shell aria-hidden="true">
-    <button class="cart-backdrop" type="button" data-cart-close aria-label="Close shopping bag"></button>
-    <aside class="cart-sidebar" role="dialog" aria-modal="true" aria-labelledby="cart-title">
-      <div class="cart-sidebar__header">
-        <h2 id="cart-title">Shopping bag</h2>
-        <button class="cart-sidebar__close" type="button" data-cart-close
-          aria-label="Close shopping bag">&times;</button>
-      </div>
-      <div class="cart-sidebar__body">
-        <p class="cart-sidebar__empty">Your bag is empty.</p>
-      </div>
-    </aside>
+<section class="gallery-section" aria-labelledby="new-arrivals-title">
+  <div class="menu">
+    <div class="menu__left">
+      <h2 class="menu__title" id="new-arrivals-title">New Arrivals</h2>
+      <button class="filter" type="button" data-sheet-open="filter" aria-haspopup="dialog" aria-expanded="false">
+        <img class="filter-icon" src="./assets/icons/filter.svg" alt="">
+        <span>Filter and order</span>
+        <span class="filter-count" data-filter-badge hidden></span>
+      </button>
+      <p class="menu__status" data-status role="status" hidden>
+        <span data-status-text></span>
+        <button class="link-button" type="button" data-clear-filters>Clear</button>
+      </p>
+    </div>
+    <div class="disposition" role="group" aria-label="Layout">
+      <button type="button" data-view-mode="carousel" aria-pressed="true">Carousel</button>
+      <button type="button" data-view-mode="cards" aria-pressed="false">Cards</button>
+    </div>
   </div>
 
-  <main>
-    <div class="hero">
-      <p class="basics">Basics</p>
-      <p class="charm">Charm</p>
-    </div>
+  <div class="carousel" data-carousel role="region" aria-roledescription="carousel" aria-label="New arrivals">
+    <button class="carousel__button carousel__button--prev" type="button" data-carousel-prev
+      aria-label="Previous product">
+      <svg width="20" height="20" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor"
+        stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M15 5l-7 7 7 7" />
+      </svg>
+    </button>
+    <div class="gallery" data-gallery data-mode="slots"></div>
+    <button class="carousel__button carousel__button--next" type="button" data-carousel-next aria-label="Next product">
+      <svg width="20" height="20" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor"
+        stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M9 5l7 7-7 7" />
+      </svg>
+    </button>
+  </div>
 
-    <section class="gallery-section">
-      <div class="menu">
-        <div class="filters">
-          <p>New Arrivals</p>
-          <a href="" class="filter">
-            <img class="filter-icon" src="./assets/icons/filter.svg" alt="filters">
-            <p>filter and order</p>
-          </a>
-        </div>
-        <div class="disposition">
-          <ul>
-            <li><a class="carousell active" href="">Carousell</a></li>
-            <li><a class="cards" href="">Cards</a></li>
-          </ul>
-        </div>
+  <div class="state" data-empty hidden>
+    <p>No items match your search.</p>
+    <button class="btn btn--ghost" type="button" data-clear-filters>Clear search and filters</button>
+  </div>
+
+  <div class="state" data-error role="alert" hidden>
+    <p data-error-message></p>
+    <button class="btn" type="button" data-retry>Try again</button>
+  </div>
+
+  <template data-fashion-card>
+    <article class="card">
+      <div class="card-box" data-media>
+        <img class="card__image" data-image width="600" height="800" alt="" decoding="async">
       </div>
-      <div class="carousel">
-        <button class="carousel__button carousel__button--prev" type="button" data-carousel-prev
-          aria-label="Previous product">&lt;</button>
-        <div class="gallery" data-gallery></div>
-        <button class="carousel__button carousel__button--next" type="button" data-carousel-next
-          aria-label="Next product">&gt;</button>
+
+      <div class="credits">
+        <p class="card__credit">
+          <a data-author target="_blank" rel="noopener noreferrer"></a>
+        </p>
+        <p class="card__name" data-name></p>
+        <p class="price" data-price></p>
+        <button class="favorite-toggle" type="button" data-favorite-toggle aria-pressed="false"
+          aria-label="Favorite"></button>
+      </div>
+      <div class="card__actions">
+        <button class="btn btn--ghost add-to-bag" type="button" data-add-to-bag>Add to bag</button>
+      </div>
+    </article>
+  </template>
+
+  <template data-grid-card>
+    <article class="tile">
+      <div class="tile__media" data-media>
+        <img class="tile__image" data-image width="600" height="800" alt="" decoding="async">
       </div>
 
-      <template class="container" data-fashion-card>
-        <article class="card">
-          <div class="card-box">
-            <img class="card__image" data-image />
-          </div>
-
-          <div class="credits">
-            <p class="card__credit">
-              <a data-author target="_blank" rel="noreferrer"></a>
-            </p>
-            <p class="card__name" data-name></p>
-            <p class="price">€ 22.99</p>
-            <button class="favorite-toggle" type="button" data-favorite-toggle aria-pressed="false"
-              aria-label="Add to favorites">
-              <img src="./assets/icons/love.svg" alt="">
-            </button>
-          </div>
-
-        </article>
-      </template>
-    </section>
-  </main>
-</body>
+      <div class="credits">
+        <p class="card__name" data-name></p>
+        <p class="price" data-price></p>
+        <button class="favorite-toggle" type="button" data-favorite-toggle aria-pressed="false"
+          aria-label="Favorite"></button>
+      </div>
+      <div class="card__actions">
+        <button class="btn btn--ghost add-to-bag" type="button" data-add-to-bag>Add to bag</button>
+      </div>
+    </article>
+  </template>
+</section>

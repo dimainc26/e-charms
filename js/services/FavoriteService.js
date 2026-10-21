@@ -1,38 +1,85 @@
 const STORAGE_KEY = "e-charms:favorites";
+const listeners = new Set();
+let cache = null;
+
+function emit() {
+    listeners.forEach((listener) => listener());
+}
+
+// Another tab changed the favorites
+window.addEventListener("storage", (event) => {
+    if (event.key === STORAGE_KEY || event.key === null) {
+        cache = null;
+        emit();
+    }
+});
 
 export class FavoriteService {
     static getAll() {
+        if (cache) {
+            return cache;
+        }
+
         try {
             const items = JSON.parse(localStorage.getItem(STORAGE_KEY) || "[]");
 
-            if (!Array.isArray(items)) {
-                return [];
-            }
-
-            return FavoriteService.sort(items);
+            cache = Array.isArray(items) ? FavoriteService.sort(items) : [];
         } catch {
-            return [];
+            cache = [];
         }
+
+        return cache;
     }
 
     static has(id) {
         return FavoriteService.getAll().some((item) => item.id === id);
     }
 
-    static toggle(item) {
-        const favorites = FavoriteService.getAll();
-        const exists = favorites.some((favorite) => favorite.id === item.id);
-        const nextFavorites = exists
-            ? favorites.filter((favorite) => favorite.id !== item.id)
-            : FavoriteService.sort([...favorites, FavoriteService.normalize(item)]);
+    static count() {
+        return FavoriteService.getAll().length;
+    }
 
-        FavoriteService.save(nextFavorites);
+    static add(item) {
+        if (FavoriteService.has(item.id)) {
+            return;
+        }
+
+        FavoriteService.save([...FavoriteService.getAll(), FavoriteService.normalize(item)]);
+    }
+
+    static remove(id) {
+        FavoriteService.save(FavoriteService.getAll().filter((favorite) => favorite.id !== id));
+    }
+
+    static toggle(item) {
+        const exists = FavoriteService.has(item.id);
+
+        if (exists) {
+            FavoriteService.remove(item.id);
+        } else {
+            FavoriteService.add(item);
+        }
 
         return !exists;
     }
 
     static save(items) {
-        localStorage.setItem(STORAGE_KEY, JSON.stringify(FavoriteService.sort(items), null, 2));
+        cache = FavoriteService.sort(items);
+
+        try {
+            localStorage.setItem(STORAGE_KEY, JSON.stringify(cache, null, 2));
+        } catch {
+            // storage unavailable: favorites live in memory for this session
+        }
+
+        emit();
+    }
+
+    // Calls listener whenever favorites change, here or in another tab.
+    static subscribe(listener) {
+        listeners.add(listener);
+
+        return () => listeners.delete(listener);
     }
 
     static sort(items) {
@@ -50,6 +97,8 @@ export class FavoriteService {
             price: item.price ?? "",
             imageUrl: item.imageUrl,
             thumbUrl: item.thumbUrl ?? item.imageUrl,
+            rawUrl: item.rawUrl ?? "",
+            color: item.color ?? "",
             alt: item.alt ?? item.name ?? "Favorite item",
             authorName: item.authorName ?? "",
             authorUrl: item.authorUrl ?? "",

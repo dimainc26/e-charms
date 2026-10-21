@@ -1,49 +1,33 @@
-<header>
-  <nav>
-    <ul class="nav-links">
-      <li><a href="#home" class="nav-link">Woman</a></li>
-      <li><a href="#home" class="nav-link">Man</a></li>
-      <li><a href="#home" class="nav-link">Teen</a></li>
-      <li><a href="#home" class="nav-link">Kids</a></li>
-    </ul>
-    <ul class="nav-icons">
-      <li><a href="#home" class="nav-icon" aria-label="Search"> <img src="./assets/icons/search.svg" alt=""> </a></li>
-      <li><a href="#favorites" class="nav-icon active" aria-label="Favorites"> <img src="./assets/icons/love.svg"
-            alt=""> </a></li>
-      <li><a href="" class="nav-icon bag" data-cart-toggle aria-label="Open shopping bag" aria-expanded="false"> <img
-            src="./assets/icons/bag.svg" alt="">
-          <div class="dot"></div>
-        </a></li>
-      <li><a href="#profile" class="nav-icon" aria-label="Profile"> <img src="./assets/icons/avatar.svg" alt=""> </a>
-      </li>
-    </ul>
-  </nav>
-</header>
-
-<div class="cart-shell" data-cart-shell aria-hidden="true">
-  <button class="cart-backdrop" type="button" data-cart-close aria-label="Close shopping bag"></button>
-  <aside class="cart-sidebar" role="dialog" aria-modal="true" aria-labelledby="cart-title">
-    <div class="cart-sidebar__header">
-      <h2 id="cart-title">Shopping bag</h2>
-      <button class="cart-sidebar__close" type="button" data-cart-close aria-label="Close shopping bag">&times;</button>
-    </div>
-    <div class="cart-sidebar__body">
-      <p class="cart-sidebar__empty">Your bag is empty.</p>
-    </div>
-  </aside>
-</div>
-
-<main class="favorites-page">
-  <section class="favorites-hero">
-    <p class="basics">Favorites</p>
-    <p class="charm" data-favorites-count></p>
-  </section>
+<div class="favorites-page">
+  <h1 class="page-hero">
+    <span class="basics">Favorites</span>
+    <span class="charm" data-favorites-count></span>
+  </h1>
 
   <section class="favorites-section">
     <div class="favorites-grid" data-favorites-list></div>
-    <div class="favorites-empty" data-favorites-empty>
-      <p>No favorites yet.</p>
-      <a href="#home">Back to new arrivals</a>
+    <div class="favorites-empty" data-favorites-empty hidden>
+      <p data-empty-message>No favorites yet.</p>
+      <a href="#/shop/woman" data-empty-link>Back to new arrivals</a>
+      <button class="btn btn--ghost" type="button" data-clear-search hidden>Clear search</button>
     </div>
   </section>
-</main>
+
+  <template data-favorite-card>
+    <article class="tile">
+      <div class="tile__media" data-media>
+        <img class="tile__image" data-image width="600" height="800" alt="" decoding="async">
+      </div>
+
+      <div class="credits">
+        <p class="card__name" data-name></p>
+        <p class="price" data-price></p>
+        <button class="favorite-toggle favorite-toggle--active" type="button" data-favorite-toggle
+          aria-pressed="true"></button>
+      </div>
+      <div class="card__actions">
+        <button class="btn btn--ghost add-to-bag" type="button" data-add-to-bag>Add to bag</button>
+      </div>
+    </article>
+  </template>
+</div>

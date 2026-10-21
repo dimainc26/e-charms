@@ -1,0 +1,131 @@
+<a class="skip-link" href="#main" data-skip-link>Skip to content</a>
+
+<header class="site-header" data-sheet-inert>
+  <nav class="site-nav" aria-label="Main">
+    <ul class="nav-links">
+      <li><a href="#/shop/woman" class="nav-link" data-category="woman">Woman</a></li>
+      <li><a href="#/shop/man" class="nav-link" data-category="man">Man</a></li>
+      <li><a href="#/shop/teen" class="nav-link" data-category="teen">Teen</a></li>
+      <li><a href="#/shop/kids" class="nav-link" data-category="kids">Kids</a></li>
+    </ul>
+    <ul class="nav-icons">
+      <li>
+        <button class="nav-icon" type="button" data-search-toggle aria-label="Search" aria-expanded="false"
+          aria-controls="search-panel">
+          <span class="icon icon--search" aria-hidden="true"></span>
+          <span class="nav-label" aria-hidden="true">Search</span>
+          <span class="dot" data-search-dot hidden></span>
+        </button>
+      </li>
+      <li>
+        <a href="#/favorites" class="nav-icon" data-nav="favorites" aria-label="Favorites">
+          <span class="icon icon--love" aria-hidden="true"></span>
+          <span class="nav-label" aria-hidden="true">Favorites</span>
+          <span class="nav-badge" data-favorites-badge hidden></span>
+        </a>
+      </li>
+      <li>
+        <button class="nav-icon" type="button" data-sheet-open="cart" aria-label="Shopping bag" aria-expanded="false"
+          aria-haspopup="dialog">
+          <span class="icon icon--bag" aria-hidden="true"></span>
+          <span class="nav-label" aria-hidden="true">Bag</span>
+          <span class="nav-badge" data-cart-badge hidden></span>
+        </button>
+      </li>
+      <li>
+        <a href="#/profile" class="nav-icon" data-nav="profile" aria-label="Profile">
+          <span class="icon icon--avatar" aria-hidden="true"></span>
+          <span class="nav-label" aria-hidden="true">Profile</span>
+        </a>
+      </li>
+    </ul>
+  </nav>
+
+  <div class="search-panel" id="search-panel" data-search-panel role="search">
+    <form class="search-panel__form" data-search-form>
+      <label class="sr-only" for="site-search">Search products</label>
+      <input class="search-panel__input" id="site-search" name="search" data-search-input type="search"
+        placeholder="search" autocomplete="off" enterkeyhint="search" autocapitalize="off" spellcheck="false">
+    </form>
+  </div>
+</header>
+
+<main class="site-main" id="main" tabindex="-1" data-view data-sheet-inert></main>
+
+<div class="sheet-shell" data-sheet="cart" aria-hidden="true">
+  <div class="sheet-backdrop" data-sheet-close></div>
+  <div class="sheet sheet--cart" role="dialog" aria-modal="true" aria-labelledby="cart-title">
+    <div class="sheet__header">
+      <h2 id="cart-title">Shopping bag <span class="sheet__count" data-cart-count></span></h2>
+      <button class="sheet__close" type="button" data-sheet-close data-sheet-initial-focus
+        aria-label="Close shopping bag">&times;</button>
+    </div>
+    <div class="sheet__body" data-cart-body></div>
+    <div class="sheet__footer sheet__footer--stack" data-cart-footer hidden>
+      <p class="cart-total"><span>Subtotal</span> <strong data-cart-subtotal></strong></p>
+      <p class="cart-note">Shipping and taxes are calculated at checkout.</p>
+      <button class="btn" type="button" data-cart-checkout>Checkout</button>
+    </div>
+    <p class="sr-only" role="status" data-cart-status></p>
+
+    <template data-cart-item>
+      <li class="cart-item" data-item-id>
+        <div class="cart-item__media" data-media>
+          <img class="cart-item__image" data-image width="72" height="96" alt="" decoding="async">
+        </div>
+        <div class="cart-item__info">
+          <p class="cart-item__name" data-name></p>
+          <p class="cart-item__price" data-price></p>
+          <div class="qty" role="group">
+            <button class="qty__btn" type="button" data-qty="-1"><span aria-hidden="true">&minus;</span></button>
+            <span class="qty__value" data-quantity></span>
+            <button class="qty__btn" type="button" data-qty="1"><span aria-hidden="true">+</span></button>
+          </div>
+        </div>
+        <div class="cart-item__side">
+          <strong data-line-total></strong>
+          <button class="link-button" type="button" data-remove>Remove</button>
+        </div>
+      </li>
+    </template>
+  </div>
+</div>
+
+<div class="sheet-shell" data-sheet="filter" aria-hidden="true">
+  <div class="sheet-backdrop" data-sheet-close></div>
+  <div class="sheet" role="dialog" aria-modal="true" aria-labelledby="filter-title">
+    <div class="sheet__header">
+      <h2 id="filter-title">Filter and order</h2>
+      <button class="sheet__close" type="button" data-sheet-close aria-label="Close filters">&times;</button>
+    </div>
+    <form class="filter-form" data-filter-form>
+      <fieldset class="field-group">
+        <legend>Order by</legend>
+        <div class="chips">
+          <label class="choice"><input type="radio" name="sort" value="featured" checked><span>Featured</span></label>
+          <label class="choice"><input type="radio" name="sort" value="price-asc"><span>Price: low to high</span></label>
+          <label class="choice"><input type="radio" name="sort" value="price-desc"><span>Price: high to low</span></label>
+          <label class="choice"><input type="radio" name="sort" value="name"><span>Name: A-Z</span></label>
+        </div>
+      </fieldset>
+      <fieldset class="field-group">
+        <legend>Price</legend>
+        <div class="chips">
+          <label class="choice"><input type="radio" name="price" value="any" checked><span>Any</span></label>
+          <label class="choice"><input type="radio" name="price" value="under-50"><span>Under &euro; 50</span></label>
+          <label class="choice"><input type="radio" name="price" value="50-100"><span>&euro; 50 - 100</span></label>
+          <label class="choice"><input type="radio" name="price" value="over-100"><span>Over &euro; 100</span></label>
+        </div>
+      </fieldset>
+      <div class="sheet__footer">
+        <button class="btn btn--ghost" type="button" data-filter-reset>Reset</button>
+        <button class="btn" type="submit" data-filter-submit>Show results</button>
+      </div>
+    </form>
+  </div>
+</div>
+
+<div class="toast" data-toast role="status" aria-live="polite" aria-atomic="true">
+  <span data-toast-message></span>
+  <button class="toast__action" type="button" data-toast-action hidden></button>
+</div>

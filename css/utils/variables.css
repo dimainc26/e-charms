@@ -1,0 +1,42 @@
+:root {
+  /* Palette. Text colors are AA (>= 4.5:1) on --back-color. */
+  --back-color: #e0dad2;
+  --font-color: #544d49;
+  --soft-color: #655e59;
+  --other-color: #beb6ac;
+  --surface-color: #f4f5f3;
+  --line-color: rgba(99, 92, 89, 0.16);
+  --scrim-color: rgba(99, 92, 89, 0.22);
+  --shadow-color: #817b74;
+  --accent-color: #b6465f;
+  --alert-color: red;
+
+  /* Sizing */
+  --tap: 44px;
+  --gutter: clamp(16px, 2.5vw, 40px);
+  --gutter-wide: clamp(16px, 5vw, 72px);
+  --safe-bottom: env(safe-area-inset-bottom, 0px);
+  --tabbar-h: 0px;
+
+  /* Product grid, shared by the home grid and the favorites page */
+  --grid-cols: 4;
+  --grid-gap: 24px;
+
+  --motion: 420ms;
+}
+
+/* Breakpoints (media queries can't read custom properties):
+   tablet 900px, phone 560px, grid 1100px */
+@media (max-width: 1100px) {
+  :root {
+    --grid-cols: 3;
+  }
+}
+
+@media (max-width: 560px) {
+  :root {
+    --grid-cols: 2;
+    --grid-gap: 12px;
+    --tabbar-h: 60px;
+  }
+}

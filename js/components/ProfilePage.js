@@ -1,15 +1,15 @@
 import { loadHtml } from "../utils/dom.js";
 
 export class ProfilePage {
-    async render() {
-        const templateUrl = new URL("../../templates/pages/ProfilePage.html", import.meta.url);
-        const html = await loadHtml(templateUrl);
-        const container = document.createElement("div");
+    get title() {
+        return "Profile · E-Charms Store";
+    }
 
-        container.innerHTML = html;
-
-        return container.innerHTML;
+    render() {
+        return loadHtml(new URL("../../templates/pages/ProfilePage.html", import.meta.url));
     }
 
     mount() {}
+
+    unmount() {}
 }

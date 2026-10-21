@@ -1,0 +1,27 @@
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: var(--tap);
+  padding: 0 24px;
+  border: 1px solid var(--font-color);
+  background-color: var(--font-color);
+  color: var(--surface-color);
+  font-size: 16px;
+  transition: transform 120ms ease;
+}
+
+.btn--ghost {
+  background-color: transparent;
+  color: var(--font-color);
+}
+
+.btn:active {
+  transform: translateY(1px);
+}
+
+.link-button {
+  min-height: 32px;
+  color: var(--font-color);
+  text-decoration: underline;
+}

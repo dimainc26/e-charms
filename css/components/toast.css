@@ -1,0 +1,50 @@
+.toast {
+  position: fixed;
+  right: 0;
+  bottom: calc(var(--tabbar-h) + var(--safe-bottom) + 16px);
+  left: 0;
+  z-index: 120;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  width: max-content;
+  max-width: min(92vw, 420px);
+  margin-inline: auto;
+  padding: 6px 6px 6px 18px;
+  background-color: var(--font-color);
+  color: var(--surface-color);
+  font-size: 15px;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(24px);
+  transition:
+    opacity 200ms ease,
+    transform 200ms ease,
+    visibility 0s linear 200ms;
+}
+
+.toast--visible {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+  transition-delay: 0s;
+}
+
+.toast__action {
+  min-height: var(--tap);
+  padding: 0 14px;
+  color: inherit;
+  font-weight: bold;
+  text-decoration: underline;
+}
+
+/* A bottom sheet fills the lower part of the screen: show the toast on top instead */
+.sheet-is-open .toast {
+  top: calc(env(safe-area-inset-top, 0px) + 16px);
+  bottom: auto;
+  transform: translateY(-24px);
+}
+
+.sheet-is-open .toast--visible {
+  transform: translateY(0);
+}

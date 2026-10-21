@@ -1,21 +1,47 @@
 @font-face {
   font-family: "Gallient";
-  src: url("../../assets/fonts/Gallient Regular.ttf") format("truetype");
+  src: url("../../assets/fonts/Gallient-Regular.woff2") format("woff2");
   font-weight: normal;
   font-style: normal;
+  font-display: swap;
 }
 
 @font-face {
   font-family: "Lovelace";
-  src: url("../../assets/fonts/Lovelace Text Regular.otf") format("opentype");
+  src: url("../../assets/fonts/LovelaceText-Regular.woff2") format("woff2");
   font-weight: normal;
   font-style: normal;
+  font-display: swap;
 }
 
 @font-face {
   font-family: "Lovelace";
-  src: url("../../assets/fonts/Lovelace Text Bold Italic.otf")
-    format("opentype");
+  src: url("../../assets/fonts/LovelaceText-BoldItalic.woff2") format("woff2");
   font-weight: bold;
+  font-style: italic;
+  font-display: swap;
+}
+
+a {
+  text-decoration: none;
+  color: var(--soft-color);
+  font-size: 18px;
+}
+
+@media (hover: hover) {
+  a:hover {
+    text-decoration: underline;
+    color: var(--font-color);
+  }
+}
+
+.basics {
+  color: var(--font-color);
+  font-family: "Gallient";
+}
+
+.charm {
+  color: var(--other-color);
+  font-family: "Lovelace";
   font-style: italic;
 }
